@@ -1,6 +1,26 @@
 console.log("connected");
 const themeToggle=document.getElementById("dark-mode-btn")
 
+
+
+let allCountries = []; 
+//fetch countries
+async function fetchCountries() {
+    try {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch countries");
+        }
+        allCountries = data;
+        console.log(allCountries);
+    return data;
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
 // Load saved theme from localStorage
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
@@ -10,7 +30,7 @@ function loadTheme() {
     themeToggle.textContent = "🌚 Dark Mode";
   }
 }
-console.log(loadTheme);
+
 // Toggle theme and update localStorage
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
