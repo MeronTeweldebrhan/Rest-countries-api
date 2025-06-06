@@ -1,5 +1,6 @@
 console.log("connected");
 const themeToggle=document.getElementById("dark-mode-btn")
+const countryList = document.getElementById("country-list");
 
 
 
@@ -14,12 +15,36 @@ async function fetchCountries() {
             throw new Error("Failed to fetch countries");
         }
         allCountries = data;
-        console.log(allCountries);
+        displayCountries(allCountries);
     return data;
     } catch (error) {
         console.log(error);
     }
     
+}
+//display countries
+function displayCountries(countries) {
+  try{
+  countryList.innerHTML = "";
+  countries.forEach(country => {
+    const card = document.createElement("div");
+    card.className = "country-card";
+    card.innerHTML = `
+      <img src="${country.flags.svg}" alt="${country.name.common} flag" />
+       <h3>${country.name.common}</h3>
+       <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+       <p><strong>Region:</strong> ${country.region}</p>
+       <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
+    `;
+    card.addEventListener("click", () => {
+      window.location.href = `country-detail.html?name=${country.name.common}`;
+    });
+    countryList.appendChild(card);
+  });
+} catch (error) {
+    console.log(error);
+
+}
 }
 // Load saved theme from localStorage
 function loadTheme() {
@@ -42,3 +67,4 @@ themeToggle.addEventListener("click", () => {
 });
 
 loadTheme();
+fetchCountries();
