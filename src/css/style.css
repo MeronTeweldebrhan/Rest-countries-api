@@ -1,7 +1,7 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
-  --card-bg: #f2f2f2;
+  --card-bg: #eee4e4;
 }
 
 body.dark {
@@ -30,7 +30,7 @@ body {
   font-size: 1rem;
 }
 .country-card {
- background-color: var(--bg-color);
+ background-color:var(--card-bg);
   color: var(--text-color);
   padding: 1rem;
   border-radius: 8px;
@@ -49,4 +49,28 @@ body {
   height: 150px;
   object-fit: cover;
   border-radius: 6px;
+}
+#country-details {
+  display: flex;
+  align-items: center;         /* vertically align image and text */
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: rgb(253, 253, 253);
+  flex-wrap: wrap;             /* for mobile responsiveness */
+}
+.country-details img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+
+#back-btn {
+  margin: 1rem 0;
+  padding: 0.6rem 1rem;
+  border: none;
+  background-color: #f5f6f7;
+  color: rgb(0, 0, 0);
+  border-radius: 6px;
+  cursor: pointer;
 }
