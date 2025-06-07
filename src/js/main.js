@@ -8,12 +8,13 @@ let allCountries = [];
 //fetch countries
 async function fetchCountries() {
     try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
-        const data = await response.json();
+        const response = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags");
+       
 
         if (!response.ok) {
             throw new Error("Failed to fetch countries");
         }
+        const data = await response.json();
         allCountries = data;
         displayCountries(allCountries);
     return data;
