@@ -2,8 +2,6 @@ console.log("connected");
 const themeToggle=document.getElementById("dark-mode-btn")
 const countryList = document.getElementById("country-list");
 
-
-
 let allCountries = []; 
 //fetch countries
 async function fetchCountries() {
