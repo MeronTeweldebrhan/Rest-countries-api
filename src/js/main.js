@@ -6,8 +6,8 @@ let allCountries = [];
 //fetch countries
 async function fetchCountries() {
     try {
-        const response = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags");
-       
+        const response = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,borders");
+       console.log(response);
 
         if (!response.ok) {
             throw new Error("Failed to fetch countries");
