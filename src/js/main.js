@@ -6,7 +6,7 @@ let allCountries = [];
 //fetch countries
 async function fetchCountries() {
     try {
-        const response = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,borders");
+        const response = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,");
        console.log(response);
 
         if (!response.ok) {
@@ -37,6 +37,7 @@ function displayCountries(countries) {
     `;
     card.addEventListener("click", () => {
       window.location.href = `country-detail.html?name=${country.name.common}`;
+      console.log(card);
     });
     countryList.appendChild(card);
   });
