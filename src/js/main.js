@@ -72,9 +72,11 @@ function filterCountries() {
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
+    document.body.classList.add("dark");
     themeToggle.textContent = "🌞 Light Mode";
   }else{
-    themeToggle.textContent = "🌚 Dark Mode";
+    document.body.classList.remove("dark");
+    themeToggle.textContent = "🌙 Dark Mode";
   }
 }
 
