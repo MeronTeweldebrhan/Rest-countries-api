@@ -1,6 +1,8 @@
 console.log("connected");
 const themeToggle=document.getElementById("dark-mode-btn")
 const countryList = document.getElementById("country-list");
+const searchInput =document.getElementById("search-input");
+const regionFilter =document.getElementById("region-filter");
 
 let allCountries = []; 
 //fetch countries
@@ -15,6 +17,7 @@ async function fetchCountries() {
         const data = await response.json();
         allCountries = data;
         displayCountries(allCountries);
+        searchInput.disabled = false;
     return data;
     } catch (error) {
         console.log(error);
@@ -45,6 +48,25 @@ function displayCountries(countries) {
     console.log(error);
 
 }
+}
+searchInput.addEventListener("input", () => {
+  filterCountries();
+});
+regionFilter.addEventListener("change", () => {
+  filterCountries();
+});
+function filterCountries() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const selectedRegion = regionFilter.value;
+
+  const filtered = allCountries.filter(country => {
+    const matchesSearch = (country.name?.common || "").toLowerCase().includes(searchTerm);
+    const matchesRegion = selectedRegion === "all" || selectedRegion === "" ? true: country.region.toLowerCase() === selectedRegion.toLowerCase();
+    
+    return matchesSearch && matchesRegion;
+  });
+
+  displayCountries(filtered);
 }
 // Load saved theme from localStorage
 function loadTheme() {
