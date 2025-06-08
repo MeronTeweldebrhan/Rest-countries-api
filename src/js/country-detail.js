@@ -48,12 +48,16 @@ function displayCountryDetail(country,allCountries) {
         <p><strong>Native Name:</strong> ${country.name.nativeName ? Object.values(country.name.nativeName)[0].common : "N/A"}</p>
         <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
         <p><strong>Region:</strong> ${country.region}</p>
-        <p><strong>Subregion:</strong> ${country.subregion}</p>
-        <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
-        <p><strong>Top Level Domain:</strong> ${country.tld ? country.tld[0] : "Data limit — info missing"}</p>
-        <p><strong>Currency:</strong> ${country.currencies ? Object.values(country.currencies)[0].name : "N/A"}</p>
-        <p><strong>Common Languages:</strong> ${country.languages ? Object.values(country.languages).join(", ") : "N/A"}</p>
-        <p><strong>Border Countries:</strong> <span id="border-countries"></span></p>
+         <p><strong>Subregion:</strong> ${country.subregion}</p>
+         <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
+        <div class="additional-info">
+            <p><strong>Top Level Domain:</strong> ${country.tld ? country.tld[0] : "Data limit — info missing"}</p>
+            <p><strong>Currency:</strong> ${country.currencies ? Object.values(country.currencies)[0].name : "N/A"}</p>
+           <p><strong>Languages:</strong> ${country.languages ? Object.values(country.languages).join(", ") : "N/A"}</p>
+           <div class="border-countries">
+               <p><strong>Border Countries:</strong> <span id="border-countries"></span></p>
+           </div>
+        </div>
       </div>
     `;
     countryDetail.innerHTML = "";
