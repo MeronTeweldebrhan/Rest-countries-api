@@ -89,6 +89,7 @@ if (country.borders) {
     console.log(error);
   }
 }
+fetchCountryDetail(countryName);
 // Load saved theme from localStorage
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
@@ -112,4 +113,3 @@ themeToggle.addEventListener("click", () => {
 });
 
 loadTheme();
-fetchCountryDetail(countryName);
