@@ -1,6 +1,6 @@
 const countryDetail= document.getElementById("country-details");
 const backBtn = document.getElementById("back-btn");
-
+const themeToggle=document.getElementById("dark-mode-btn")
 
 const countryName = new URLSearchParams(window.location.search).get("name");
 console.log("Country name from URL:", countryName);
@@ -54,7 +54,7 @@ function displayCountryDetail(country,allCountries) {
             <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
           </div>
           <div class="info-column">
-            <p><strong>Top Level Domain:</strong> ${country.tld ? country.tld[0] : "N/A"}</p>
+            <p><strong>Top Level Domain:</strong> ${country.tld ? country.tld[0] : "Data limit — info missing"}</p>
             <p><strong>Currencies:</strong> ${country.currencies ? Object.values(country.currencies)[0].name : "N/A"}</p>
             <p><strong>Languages:</strong> ${country.languages ? Object.values(country.languages).join(", ") : "N/A"}</p>
           </div>
@@ -93,6 +93,7 @@ if (country.borders) {
     console.log(error);
   }
 }
+
 fetchCountryDetail(countryName);
 // Load saved theme from localStorage
 function loadTheme() {
