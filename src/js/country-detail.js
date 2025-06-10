@@ -42,21 +42,25 @@ function displayCountryDetail(country,allCountries) {
     const card = document.createElement("div");
     card.className = "country-details";
     card.innerHTML = `
-      <img src="${country.flags.svg}" alt="${country.name.common} flag" class="country-flag" />
+     <img src="${country.flags.svg}" alt="${country.name.common} flag" class="country-flag" />
       <div class="country-info">
         <h2>${country.name.common}</h2>
-        <p><strong>Native Name:</strong> ${country.name.nativeName ? Object.values(country.name.nativeName)[0].common : "N/A"}</p>
-        <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-        <p><strong>Region:</strong> ${country.region}</p>
-         <p><strong>Subregion:</strong> ${country.subregion}</p>
-         <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
-        <div class="additional-info">
-            <p><strong>Top Level Domain:</strong> ${country.tld ? country.tld[0] : "Data limit — info missing"}</p>
-            <p><strong>Currency:</strong> ${country.currencies ? Object.values(country.currencies)[0].name : "N/A"}</p>
-           <p><strong>Languages:</strong> ${country.languages ? Object.values(country.languages).join(", ") : "N/A"}</p>
-           <div class="border-countries">
-               <p><strong>Border Countries:</strong> <span id="border-countries"></span></p>
-           </div>
+        <div class="info-columns">
+          <div class="info-column">
+            <p><strong>Native Name:</strong> ${country.name.nativeName ? Object.values(country.name.nativeName)[0].common : "N/A"}</p>
+            <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+            <p><strong>Region:</strong> ${country.region}</p>
+            <p><strong>Sub Region:</strong> ${country.subregion || "N/A"}</p>
+            <p><strong>Capital:</strong> ${country.capital ? country.capital[0] : "N/A"}</p>
+          </div>
+          <div class="info-column">
+            <p><strong>Top Level Domain:</strong> ${country.tld ? country.tld[0] : "N/A"}</p>
+            <p><strong>Currencies:</strong> ${country.currencies ? Object.values(country.currencies)[0].name : "N/A"}</p>
+            <p><strong>Languages:</strong> ${country.languages ? Object.values(country.languages).join(", ") : "N/A"}</p>
+          </div>
+        </div>
+        <div class="border-section">
+          <p><strong>Border Countries:</strong> <span id="border-countries"></span></p>
         </div>
       </div>
     `;
